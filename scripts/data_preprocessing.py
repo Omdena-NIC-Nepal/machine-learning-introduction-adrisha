@@ -1,19 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[21]:
+# In[1]:
 
 
 import pandas as pd
@@ -28,7 +16,7 @@ from sklearn.model_selection import train_test_split
 
 # ### Identify Missing Values
 
-# In[5]:
+# In[2]:
 
 
 data = pd.read_csv('../data/bostonhousing.csv')
@@ -44,14 +32,15 @@ else:
     print("There are missing values in the dataset.")
 
 
-# ## Handle Missing Values
+# ### Handle Missing Values
 # Since the Boston Housing Dataset typically does not have missing values, we'll assume there are no missing values to handle. However, if there were missing values, you could handle them using methods like imputation.
 
-# In[6]:
+# In[3]:
 
 
 # Check for missing values
 if missing_values.sum() > 0:
+    
     # Example: Fill missing values with the mean of the column
     data.fillna(data.mean(), inplace=True)
     print("Missing values have been filled with the mean of each column.")
@@ -60,6 +49,7 @@ else:
 
 
 # ### Identify Outliers
+# Let's identify outliers using the Interquartile Range (IQR) method.
 
 # In[7]:
 
@@ -86,6 +76,7 @@ for feature in features:
 
 
 # ### Handle Outliers
+# To handle outliers, we can choose to remove them or cap them. Here, we'll remove outliers based on the IQR method.
 
 # In[8]:
 
@@ -109,10 +100,10 @@ print("Outliers have been removed from the dataset.")
 
 # ### Using Pandas for One-Hot Encoding
 
-# In[9]:
+# In[ ]:
 
 
-# Example: Adding a new categorical variable 'neighborhood'
+# Adding a new categorical variable 'neighborhood'
 data['neighborhood'] = ['A' if i < 250 else 'B' for i in range(len(data))]
 
 # One-Hot Encoding using pandas
@@ -123,10 +114,10 @@ print(data_encoded.head())
 
 # ### Using Scikit-Learn for Label Encoding
 
-# In[12]:
+# In[5]:
 
 
-# Example: Adding a new categorical variable 'neighborhood'
+# Adding a new categorical variable 'neighborhood'
 data['neighborhood'] = ['A' if i < 250 else 'B' for i in range(len(data))]
 
 # Label Encoding using scikit-learn
@@ -138,7 +129,7 @@ print(data.head())
 
 # ### Normalize Numerical Features
 
-# In[17]:
+# In[4]:
 
 
 # List of numerical features
@@ -156,7 +147,7 @@ print(data[numerical_features].head())
 
 # ### Standardize Numerical Features
 
-# In[20]:
+# In[6]:
 
 
 # Initialize the StandardScaler
@@ -195,28 +186,4 @@ print("y_train:", y_train.shape)
 print("\nTesting set shapes:")
 print("X_test:", X_test.shape)
 print("y_test:", y_test.shape)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
